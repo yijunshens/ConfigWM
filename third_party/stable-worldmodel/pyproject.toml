@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "configwm-eval-runtime"
+version = "0.1.0"
+description = "Experiment runtime snapshot for ConfigWM matched control evaluation"
+requires-python = ">=3.12"
+
+[tool.setuptools.packages.find]
+include = ["stable_worldmodel*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.xml", "*.json", "*.yaml", "*.png", "*.jpg", "*.stl", "*.obj", "*.mtl"]

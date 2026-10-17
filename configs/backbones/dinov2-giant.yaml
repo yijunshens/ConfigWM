@@ -1,0 +1,15 @@
+vision_embedding:
+  type: hf_patch_tokens
+  model_name: facebook/dinov2-giant
+  interpolate_pos_encoding: true
+  activation_checkpointing: true
+  load_dtype: bfloat16
+  expected_patch_count: 4096
+preprocessor:
+  id: imagenet_image
+  resolution: 896
+patch_size: 14
+projector_dim: 1536
+max_query_tokens: 64
+trainer:
+  full_determinism: false

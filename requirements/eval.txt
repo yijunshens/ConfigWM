@@ -1,0 +1,11 @@
+-r train.txt
+dm-control==1.0.34
+einops==0.8.2
+gymnasium==1.3.0
+imageio==2.37.0
+loguru==0.7.3
+mujoco==3.5.0
+ogbench==1.2.1
+opencv-python-headless==5.0.0.93
+pygame==2.6.1
+pymunk==7.3.0

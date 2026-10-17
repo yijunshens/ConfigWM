@@ -1,0 +1,6 @@
+{"source": "images/00_source.png", "target": "images/00_target.png", "query": "lift the wheel off the feet with both hands", "case_id": "example_00", "split": "train"}
+{"source": "images/01_source.png", "target": "images/01_target.png", "query": "attach the vertical bar", "case_id": "example_01", "split": "train"}
+{"source": "images/02_source.png", "target": "images/02_target.png", "query": "push pencil from left to right", "case_id": "example_02", "split": "train"}
+{"source": "images/03_source.png", "target": "images/03_target.png", "query": "slide the milk frother and its base on the counter to get it closer to where the person is standing", "case_id": "example_03", "split": "train"}
+{"source": "images/04_source.png", "target": "images/04_target.png", "query": "gather and move the yellow paper stars from the scattered pile onto the main sorting area with the hand", "case_id": "example_04", "split": "train"}
+{"source": "images/05_source.png", "target": "images/05_target.png", "query": "watch someone unscrewing the screws used to fix the screen", "case_id": "example_05", "split": "train"}

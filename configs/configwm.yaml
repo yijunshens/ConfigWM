@@ -1,0 +1,67 @@
+seed: 42
+
+data:
+  data_dir: ./data
+  feature_cache_dir: null
+  query_metadata_path: query_metadata.jsonl
+  batch_size: 512
+  num_workers: 24
+  resolution: 224
+  num_hist: 3
+  frameskip: 5
+  target_offset: 5
+  action_dim: 2
+  max_samples: null
+  sample_mode: random
+  normalize_actions: true
+  pin_memory: true
+  persistent_workers: false
+  prefetch_factor: null
+
+model:
+  encoder_type: configurable_encoder
+  dino_model_name: ./data
+  dino_input_size: 224
+  encoder_checkpoint: ./checkpoints/configurable_encoder
+  encoder_backbone_dtype: bfloat16
+  query: focus on the red circle
+  readout: patch_tokens
+  use_observation_projector: true
+  projector_type: dino_channel_agg
+  adapter_dim: 256
+  state_dim: 192
+  projector_spatial_hw: 16
+  projector_channel_dim: 8
+  projector_agg_hidden_dim: 2048
+  detach_target: false
+  projector_pool_hw: 1
+  curvature_weight: 0.0
+  curvature_mode: cos
+  sigreg_weight: 0.09
+  sigreg_num_proj: 1024
+  sigreg_knots: 17
+  action_emb_dim: 10
+  predictor_type: lewm_ar
+  predictor_hidden_dim: 192
+  predictor_dim_head: 64
+  predictor_emb_dropout: 0.0
+  predictor_depth: 6
+  predictor_heads: 16
+  predictor_mlp_dim: 2048
+  pred_projector_type: identity
+  dropout: 0.1
+
+train:
+  epochs: 10
+  projector_lr: 5.0e-5
+  predictor_lr: 5.0e-5
+  weight_decay: 0.001
+  precision: bf16
+  log_every: 10
+  output_dir: outputs/configwm
+  smoke_steps: 0
+  grad_clip_norm: 1.0
+  save_final_state: true
+  save_epoch_checkpoints: true
+  checkpoint_epochs: null
+  checkpoint_every_steps: 0

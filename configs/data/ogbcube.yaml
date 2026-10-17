@@ -1,0 +1,31 @@
+num_frames: 1
+max_str_bytes: 256
+split_inbatch_groups_across_ranks: true
+
+preprocessor:
+  id: dinov2
+  resolution: 224
+
+train_datasets:
+  - id: ogbcube
+    weight: 1.0
+
+    core_source_variants: [d0, d1, d2, d3, d4, d5, d6, d7, d8]
+    core_target_variant: d0
+    core_query: "arm"
+    core_query_template: "{color} arm"
+    core_query_require_metadata: true
+    core_temporal_offsets: [-2, -1, 0, 1, 2]
+    core_temporal_center_stride: 5
+    core_shuffle_groups: true
+
+    query_frame_stride: 1
+    query_group_size: 9
+    query_anchor_mode: bank_core_color
+    query_source_variants: [d8]
+    query_require_visible: true
+    query_shuffle_groups: false
+
+    bank_size: auto
+    query_ratio: 0.10
+    max_open_files: 16

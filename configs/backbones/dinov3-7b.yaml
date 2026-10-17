@@ -1,0 +1,27 @@
+vision_embedding:
+  type: hf_patch_tokens
+  model_name: facebook/dinov3-vit7b16-pretrain-lvd1689m
+  activation_checkpointing: false
+  load_dtype: bfloat16
+  force_uniform_dtype: true
+  expected_patch_count: 4096
+preprocessor:
+  id: imagenet_image
+  resolution: 1024
+patch_size: 16
+projector_dim: 4096
+max_query_tokens: 64
+trainer:
+  gradient_checkpointing: false
+  fsdp: full_shard auto_wrap
+  fsdp_config:
+    transformer_layer_cls_to_wrap:
+    - DINOv3ViTLayer
+    - LlamaDecoderLayer
+    backward_prefetch: backward_pre
+    forward_prefetch: false
+    use_orig_params: true
+    sync_module_states: true
+    activation_checkpointing: true
+  full_determinism: false
+parameter_dtype: bfloat16

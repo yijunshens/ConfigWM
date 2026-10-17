@@ -1,0 +1,26 @@
+num_frames: 1
+max_str_bytes: 256
+split_inbatch_groups_across_ranks: true
+
+preprocessor:
+  id: dinov2
+  resolution: 224
+
+train_datasets:
+  - id: pusht
+    weight: 1.0
+
+    core_source_variants: [d1, d2, d3, d4, d5, d6, d7, d8]
+    core_colors: [gray, red, orange, yellow, pink, purple, brown, cyan, navy]
+    core_query_template: "{color} T block"
+    core_temporal_offsets: [-2, -1, 0, 1, 2]
+    core_temporal_center_stride: 5
+    core_shuffle_groups: true
+
+    query_frame_stride: 1
+    query_group_size: 9
+    query_anchor_mode: bank_core_color
+
+    bank_size: auto
+    query_ratio: 0.10
+    max_open_files: 16

@@ -1,0 +1,9 @@
+vision_embedding:
+  type: dinov2
+  model_name: facebook/dinov2-small
+preprocessor:
+  id: dinov2
+  resolution: 224
+patch_size: 14
+projector_dim: 384
+max_query_tokens: 32

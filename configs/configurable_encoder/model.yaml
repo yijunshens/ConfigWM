@@ -1,0 +1,36 @@
+vision_embedding:
+  type: dinov2
+  model_name: ./data
+
+predictor:
+  backbone:
+    type: llama3
+    model_name: ./data
+    pretrained_weights: true
+    dtype: float32
+    start_layer: 0
+    num_layers: 3
+  max_input_tokens: 257
+  max_query_tokens: 32
+  pooling: patch_tokens
+
+text_encoder:
+  disabled: true
+
+projector:
+  type: linear
+  dim: 384
+
+freeze_vision_encoder: false
+separate_target_vision_encoder: true
+freeze_target_vision_encoder: true
+freeze_predictor_token_embeddings: true
+use_target_vision_projector: false
+add_query_to_target: false
+use_sequence_packing: false
+target_vision_pooling: patch_tokens
+
+# Patch-position InfoNCE, computed by the trainer.
+same_source_contrastive_weight: 1.0
+same_source_contrastive_temperature: 0.07
+same_source_contrastive_detach_target: true

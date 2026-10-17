@@ -1,0 +1,13 @@
+preprocessor:
+  id: dinov2
+  model_name: facebook/dinov2-small
+  resolution: 224
+num_frames: 1
+split_inbatch_groups_across_ranks: true
+train_datasets:
+- id: realworld
+  weight: 1.0
+  manifest_name: manifest.jsonl
+  split: train
+  group_size: 8
+  shuffle_records: true

@@ -1,0 +1,25 @@
+vision_embedding:
+  type: vjepa2_hub
+  model_name: vjepa2.1-vitG-384
+  add_mean_cls_token: true
+  activation_checkpointing: false
+  expected_patch_count: 4096
+preprocessor:
+  id: imagenet_image
+  resolution: 1024
+patch_size: 16
+projector_dim: 1664
+max_query_tokens: 64
+trainer:
+  gradient_checkpointing: false
+  fsdp: full_shard auto_wrap
+  fsdp_config:
+    transformer_layer_cls_to_wrap:
+    - Block
+    - LlamaDecoderLayer
+    backward_prefetch: backward_pre
+    forward_prefetch: false
+    use_orig_params: true
+    sync_module_states: true
+    activation_checkpointing: true
+  full_determinism: false

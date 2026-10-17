@@ -1,0 +1,15 @@
+vision_embedding:
+  type: lingbot_vision
+  model_name: robbyant/lingbot-vision-vit-giant
+  variant: giant
+  trainable_all: true
+  activation_checkpointing: true
+  expected_patch_count: 4096
+preprocessor:
+  id: imagenet_image
+  resolution: 1024
+patch_size: 16
+projector_dim: 1536
+max_query_tokens: 64
+trainer:
+  full_determinism: false
